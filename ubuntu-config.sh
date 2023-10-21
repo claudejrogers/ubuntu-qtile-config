@@ -61,6 +61,7 @@ sudo apt install -y alacritty
 
 # Configure alacritty
 mkdir -p ~/.config/alacritty
+wget https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/alacritty/alacritty.yml
 alacritty_config="./alacrity.yml"
 # check if alacritty config file exists
 # move it to ~/.config/alacritty if it exists
@@ -145,6 +146,7 @@ sudo mv ~/qtile.desktop /usr/share/xsessions/
 
 # Copy qtile config
 mkdir -p ~/.config/qtile
+wget https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/qtile/config.py
 qtile_config="./config.py"
 # check if qtile config file exists
 # move it to ~/.config/qtile if it exists
@@ -169,6 +171,19 @@ cat > ~/.config/gtk-3.0/settings.ini <<EOF
 gtk-theme-name=Yaru-blue-dark
 gtk-icon-theme-name=Yaru-blue-dark
 EOF
+
+# Download rofi themes/config
+log "Downloading rofi themes/config" "info"
+mkdir -p ~/.config/rofi
+wget https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/rofi/config.rasi
+wget https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/rofi/doom-one.rasi
+mkdir -p ~/.config/rofi/themes
+mv doom-one.rasi ~/.config/rofi/themes
+mv config.rasi ~/.config/rofi
+mkdir -p ~/.local/scripts
+wget https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/scripts/powermenu.sh
+mv powermenu.sh ~/.local/scripts
+
 
 # Install mambaforge python
 # TODO: install mambaforge python
