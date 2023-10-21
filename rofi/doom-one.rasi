@@ -1,0 +1,113 @@
+/*
+ * Doom One ROFI theme
+ */
+
+* {
+  black: #1b2229;
+  red: #ff6c6b;
+  green: #98be65;
+  yellow: #ecbe7b;
+  blue: #51afef;
+  magenta: #c678dd;
+  cyan: #46d9ff;
+  emphasis: #2257a0;
+  text: #bbc2cf;
+  text-alt: #5b6268;
+  fg: #bbc2cf;
+  bg: #282c34dd;
+  background-color: transparent;
+  highlight: bold #ff6c6b;
+}
+
+window {
+  transparency: "real";
+  background-color: @bg;
+  text-color: @text;
+  border: 1;
+  padding: 5;
+}
+
+mainbox {
+  border: 0;
+  padding: 0;
+}
+
+message {
+  border: 1px dash 0px 0px;
+  border-color: @emphasis;
+  padding: 1px;
+}
+
+textbox {
+  text-color: @fg;
+}
+
+listview {
+  fixed-height: 0;
+  border: 2px dash 0px 0px;
+  border-color: @emphasis;
+  spacing: 2px;
+  scrollbar: true;
+  padding: 2px 0px 0px;
+}
+
+element {
+  border: 0;
+  padding: 1px;
+}
+
+element-text {
+  background-color: inherit;
+  text-color: inherit;
+}
+
+element.normal.normal {
+  background-color: @bg;
+  text-color: @text;
+}
+
+element.selected.normal {
+  background-color: #3f444a;
+  text-color: @text;
+}
+
+element.alternate.normal {
+  text-color: @text-alt;
+}
+
+inputbar {
+  spacing: 0;
+  text-color: @text;
+}
+
+entry {
+  spacing: 0;
+  text-color: @text;
+  placeholder: "Search";
+  placeholder-color: @text-alt;
+}
+
+case-indicator {
+  spacing: 0;
+  text-color: @text;
+}
+
+prompt {
+  spacing: 0;
+  text-color: @text;
+}
+
+textbox-prompt-colon {
+  expand: false;
+  str: ":";
+  margin: 0px 0.3em 0em 0em;
+  text-color: @text;
+}
+
+inputbar {
+  children: [prompt,textbox-prompt-colon,entry,case-indicator];
+}
+
+element-icon {
+  size: 2.0ch;
+}

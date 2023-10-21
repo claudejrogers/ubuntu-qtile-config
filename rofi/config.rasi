@@ -1,0 +1,14 @@
+/*
+ * Rofi Configuration
+ */
+
+ configuration {
+    display-drun: "Applications";
+    display-window: "Windows";
+    drun-display-format: "{name}";
+    font: "MesloLGM Nerd Font Mono 12";
+    modi: "window,run,drun";
+    show-icons: true;
+ }
+
+ @theme "doom-one"
