@@ -177,8 +177,7 @@ log "Downloading rofi themes/config" "info"
 mkdir -p ~/.config/rofi
 wget https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/rofi/config.rasi
 wget https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/rofi/doom-one.rasi
-mkdir -p ~/.config/rofi/themes
-mv doom-one.rasi ~/.config/rofi/themes
+mv doom-one.rasi ~/.config/rofi
 mv config.rasi ~/.config/rofi
 mkdir -p ~/.local/scripts
 wget https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/scripts/powermenu.sh
