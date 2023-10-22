@@ -30,7 +30,7 @@ else
     mkdir -p ~/.local/bin
 fi
 
-source ~/.profile
+. ~/.profile
 
 # Update and upgrade
 log "Updating and upgrading packages" "info"
@@ -90,7 +90,7 @@ sudo apt install -y zsh
 log "Installing rust" "info"
 log "Keyboard input required" "warning"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
 
 # Install brave browser
 log "Installing brave browser" "info"
@@ -187,6 +187,10 @@ mv powermenu.sh ~/.local/scripts
 
 # Install mambaforge python
 # TODO: install mambaforge python
+
+# Clean up
+log "Cleaning up" "info"
+sudo apt autoremove -y
 
 # Switch shell to zsh
 log "Switching shell to zsh and installing oh-my-zsh" "info"
