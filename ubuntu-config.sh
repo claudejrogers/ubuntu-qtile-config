@@ -186,7 +186,12 @@ mv powermenu.sh ~/.local/scripts
 
 
 # Install mambaforge python
-# TODO: install mambaforge python
+log "Downloading mambaforge" "info"
+wget https://github.com/conda-forge/miniforge/releases/download/23.3.1-1/Mambaforge-23.3.1-1-Linux-"$(uname -m)".sh
+log "Run installer in qtile environment" "info"
+
+# Install vscode
+sudo snap install --classic code
 
 # Clean up
 log "Cleaning up" "info"
