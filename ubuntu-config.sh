@@ -20,8 +20,17 @@ log() {
     elif [ "$level" = "info" ]; then
         msg="${BLUE}[$date]${NC} $message"
     fi
-    echo -e "$msg"
+    echo "$msg"
 }
+
+if [ -d "$HOME/.local/bin" ]; then
+    log "The .local/bin directory exists" "success"
+else
+    log "Creating the .local/bin directory" "info"
+    mkdir -p ~/.local/bin
+fi
+
+source ~/.profile
 
 # Update and upgrade
 log "Updating and upgrading packages" "info"
@@ -62,7 +71,7 @@ sudo apt install -y alacritty
 # Configure alacritty
 mkdir -p ~/.config/alacritty
 wget https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/alacritty/alacritty.yml
-alacritty_config="./alacrity.yml"
+alacritty_config="./alacritty.yml"
 # check if alacritty config file exists
 # move it to ~/.config/alacritty if it exists
 if [ -f "$alacritty_config" ]; then
@@ -109,16 +118,8 @@ sudo apt install -y rofi htop aptitude picom
 
 # Install qtile
 log "Installing qtile" "info"
-# normal pip installation seems broken, and I need to specify older versions of some packages
-# pip install cffi==1.15.1
-# pip install xcffib==1.3.0
-# pip install dbus-next==0.2.3
-# pip install cairocffi==1.4.0
-# pip install qtile==0.22.1
-
-# # Install qtile from git
 pip install xcffib
-pip install git+https://github.com/qtile/qtile.git
+pip install qtile
 
 # Install dependencies for qtile
 pip install psutil
