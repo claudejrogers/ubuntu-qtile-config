@@ -34,7 +34,7 @@ class URLApp:
         return lazy.spawn(self.command)
 
     def spawn_command(self):
-        return qtile.cmd_spawn(self.command)
+        return qtile.spawn(self.command)
 
 
 chatgtp = URLApp("https://chat.openai.com")
@@ -184,7 +184,7 @@ bar_widgets = [
         "\ue73a",  # nf-dev-ubuntu
         foreground=Colors.RED.value,
         fontsize=24,
-        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("rofi -show drun -l 10")},
+        mouse_callbacks={"Button1": lambda: qtile.spawn("rofi -show drun -l 10")},
     ),
     widget.Spacer(5),
     widget.TextBox(
@@ -201,7 +201,7 @@ bar_widgets = [
     widget.TextBox(
         "",
         fontsize=18,
-        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("rofi -show window")},
+        mouse_callbacks={"Button1": lambda: qtile.spawn("rofi -show window")},
     ),
     widget.TextBox(
         "󰭻",
@@ -249,7 +249,7 @@ bar_widgets = [
     ),
     widget.Memory(
         foreground=Colors.GREEN.value,
-        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(f"{terminal} -e htop")},
+        mouse_callbacks={"Button1": lambda: qtile.spawn(f"{terminal} -e htop")},
     ),
     widget.TextBox("|"),
     widget.Volume(
@@ -281,7 +281,7 @@ bar_widgets = [
         foreground=Colors.RED.value,
         fontsize=22,
         mouse_callbacks={
-            "Button1": lambda: qtile.cmd_spawn(f"sh {HOME}/.local/scripts/powermenu.sh")
+            "Button1": lambda: qtile.spawn(f"sh {HOME}/.local/scripts/powermenu.sh")
         },
     ),
     widget.Spacer(5),

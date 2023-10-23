@@ -53,7 +53,7 @@ sudo apt install -y nodejs npm
 
 # Install some basic tools
 log "Installing basic tools" "info"
-sudo apt install -y vim git curl wget
+sudo apt install -y vim git curl wget tmux ripgrep fzf
 
 # Install neovim
 log "Installing neovim" "info"
@@ -81,7 +81,6 @@ else
     log "Alacritty config file does not exist at $alacritty_config" "error"
     log "Proceeding without configuring alacritty" "warning"
 fi
-
 
 # Install zsh
 sudo apt install -y zsh
@@ -112,6 +111,10 @@ log "Configuring neovim using nvim-lua kickstart" "info"
 git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 nvim --headless "+Lazy! sync" +qa
 
+# configure tmux
+log "Configuring tmux"
+wget -O ~/.tmux.conf https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/home/tmux.conf 
+
 # Install rofi, picom, and other packages for qtile
 log "Installing prerequisites for qtile" "info"
 sudo apt install -y rofi htop aptitude picom
@@ -123,6 +126,7 @@ pip install qtile
 
 # Install dependencies for qtile
 pip install psutil
+pip install dbus-next
 
 # Check if qtile is installed and get qtile path
 qtile_path=$(which qtile)
@@ -176,13 +180,10 @@ EOF
 # Download rofi themes/config
 log "Downloading rofi themes/config" "info"
 mkdir -p ~/.config/rofi
-wget https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/rofi/config.rasi
-wget https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/rofi/doom-one.rasi
-mv doom-one.rasi ~/.config/rofi
-mv config.rasi ~/.config/rofi
+wget -O ~/.config/rofi/config.rasi https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/rofi/config.rasi
+wget -O ~/.config/rofi/doom-one.rasi https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/rofi/doom-one.rasi
 mkdir -p ~/.local/scripts
-wget https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/scripts/powermenu.sh
-mv powermenu.sh ~/.local/scripts
+wget -O ~/.local/scripts/powermenu.sh https://raw.githubusercontent.com/claudejrogers/ubuntu-qtile-config/main/scripts/powermenu.sh
 
 
 # Install mambaforge python
