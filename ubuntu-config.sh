@@ -192,6 +192,7 @@ wget https://github.com/conda-forge/miniforge/releases/download/23.3.1-1/Mambafo
 log "Run installer in qtile environment" "info"
 
 # Install vscode
+log "Installing VS Code" "info"
 sudo snap install --classic code
 
 # Clean up

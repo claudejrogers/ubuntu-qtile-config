@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 1 ]]; then
+    project=$1
+else
+    project=$(find ~/projects -mindepth 1 -maxdepth 1 -type d | fzf)
+fi
+
+if [[ -z $project ]]; then
+    exit 0
+fi
+
+name=$(basename "$project" | tr . _)
+
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $name -c $project
+    exit 0
+fi
+
+if ! tmux has-session -t=$name 2> /dev/null; then
+    tmux new-session -ds $name -c $project
+fi
+
+tmux switch-client -t $name
